@@ -30,7 +30,7 @@ const updateBalance = async (req, res) => {
     res.json({
       status: `User ${user.name} updated`,
       code: 200,
-      user,
+      result,
     })
   } catch (error) {
     res.status(404).json(error)
