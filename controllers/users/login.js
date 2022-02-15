@@ -5,7 +5,9 @@ const { NotFound } = require('http-errors')
 const login = async (req, res) => {
   try {
     const { email, password } = req.body
+
     const user = await User.findOne({ email })
+
     if (!user || !user.comparePassword(password)) {
       throw new NotFound('Email or password is wrong')
     }
@@ -13,10 +15,11 @@ const login = async (req, res) => {
     const payload = {
       _id,
     }
-    console.log(payload)
+
     const { SECRET_KEY } = process.env
 
     const token = jwt.sign(payload, SECRET_KEY)
+
     await User.findByIdAndUpdate(user._id, { token })
 
     res.json({

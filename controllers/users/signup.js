@@ -9,9 +9,9 @@ const signup = async (req, res) => {
     if (user) {
       throw new Conflict('Already register')
     }
-    //    if(role==="user" || role==="admin")
+
     const newUser = new User({ name, email, role })
-    console.log(newUser)
+
     newUser.setPassword(password)
     await newUser.save()
 
