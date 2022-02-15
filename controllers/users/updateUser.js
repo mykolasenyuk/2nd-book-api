@@ -28,7 +28,7 @@ const updateBalance = async (req, res) => {
     await result.save()
 
     res.json({
-      status: `User ${user.name} updated`,
+      status: `User  updated`,
       code: 200,
       result,
     })
