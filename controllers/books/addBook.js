@@ -22,7 +22,7 @@ const addBook = async (req, res, next) => {
     res.status(201).json({
       status: 'sucess',
       code: 201,
-      message: `✔️ Book '${req.body.name}' added`,
+      message: `Book '${req.body.name}' added`,
       data: {
         result,
       },
