@@ -319,6 +319,12 @@
 
     Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBjYjU3OTNkY2E2OGRmOWM1ODc4NWYiLCJpYXQiOjE2NDUwMDA0Nzl9.x_eY2KMiJZO1etFloOxqj-qThxjKcQc7MVloExY8NKM
 
+### Request body:
+
+    "name":"Mad Max",
+    "author": "George Miller",
+    "pageCount": 413
+
 #### Responses:
 
 ### CODE:
@@ -355,7 +361,7 @@
 
     "message": " You don't have access"
 
-[![https://github.com/mykolasenyuk/2nd-book-api/blob/main/src/pictures/AddBook.png)]()
+[![Header](https://github.com/mykolasenyuk/2nd-book-api/blob/main/src/pictures/AddBook.png)]()
 
 ## Delete book :
 
