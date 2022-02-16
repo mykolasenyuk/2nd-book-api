@@ -177,9 +177,20 @@
 
 [![Header](https://github.com/mykolasenyuk/2nd-book-api/blob/main/src/pictures/getUserById.png)]()
 
-## Get All books:
+## Update User by Id:
 
-### GET: https://ms-books-api.herokuapp.com/api/books
+### PUT: https://books-api-2nd.herokuapp.com/users/:userid
+
+#### Available authorizations
+
+    Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBjYjU3OTNkY2E2OGRmOWM1ODc4NWYiLCJpYXQiOjE2NDUwMDA0Nzl9.x_eY2KMiJZO1etFloOxqj-qThxjKcQc7MVloExY8NKM
+
+### Request body:
+
+    "name":"User2",
+    "email": "tes4@gmail.com",
+    "password": "543210",
+    "role":"user"
 
 #### Responses:
 
@@ -187,15 +198,126 @@
 
 200 :Success
 
+     "status": "User  updated",
+    "code": 200,
+    "result": {
+        "_id": "620bad0011c034a45830024a",
+        "name": "User2",
+        "email": "tes4@gmail.com",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBiYWQwMDExYzAzNGE0NTgzMDAyNGEiLCJpYXQiOjE2NDQ5NDE4MDd9.3O4v225D-ofQKLmuKr9OucCARyV985yUrorRrDu6c1w",
+        "role": "user",
+        "password": ....
+    }
+
+400: Bad request:
+
+       Missing fields
+
+401: Unauthorized
+
+     "status": "error",
+    "code": 401,
+    "message": "Not authorized"
+
+404: Not Found:
+
+    "message": "User not found"
+
+500: Internal Server Error
+
+### if User is not admin:
+
+403: Forbidden
+
+    "message": " You don't have access"
+
+[![Header](https://github.com/mykolasenyuk/2nd-book-api/blob/main/src/pictures/UpdateUserByID.png)]()
+
+## Delete User by Id:
+
+### DELETE: https://books-api-2nd.herokuapp.com/users/:userid
+
+#### Available authorizations
+
+    Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBjYjU3OTNkY2E2OGRmOWM1ODc4NWYiLCJpYXQiOjE2NDUwMDA0Nzl9.x_eY2KMiJZO1etFloOxqj-qThxjKcQc7MVloExY8NKM
+
+#### Responses:
+
+### CODE:
+
+200 :Success
+
+     "status": "success",
+    "code": 200,
+    "message": " ✔️ User deleted"
+
+401: Unauthorized
+
+     "status": "error",
+    "code": 401,
+    "message": "Not authorized"
+
+404: Not Found:
+
+    "message": "User not found"
+
+500: Internal Server Error
+
+### if User is not admin:
+
+403: Forbidden
+
+    "message": " You don't have access"
+
+[![Header](https://github.com/mykolasenyuk/2nd-book-api/blob/main/src/pictures/DeleteUserbyID.png)]()
+
+## Get All books:
+
+### GET: https://books-api-2nd.herokuapp.com/books
+
+#### Available authorizations
+
+    Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBjYjU3OTNkY2E2OGRmOWM1ODc4NWYiLCJpYXQiOjE2NDUwMDA0Nzl9.x_eY2KMiJZO1etFloOxqj-qThxjKcQc7MVloExY8NKM
+
+#### Responses:
+
+### CODE:
+
+200 :Success
+
+      "status": "✔️ Success",
+    "code": 200,
+    "books": [
+
+        {
+            "_id": "620bb9710be37eb8de471bf3",
+            "name": "Dorian Gray",
+            "author": "Oscar Wilde",
+            "pageCount": 345,
+            "createdAt":.....
+        {
+            "_id": "620bb98e0be37eb8de471bf6",
+            "name": "Dune",
+            "author": "Frank Herbert",
+            "pageCount": 353,
+            ....
+        }....
+
 404: Not Found
 
-500: Server Error
+    "message": "Not found"
 
-[![Header](https://github.com/mykolasenyuk/books-api/blob/main/pic/getAll.jpg)]()
+500: Internal Server Error
+
+[![Header](https://github.com/mykolasenyuk/2nd-book-api/blob/main/src/pictures/GetAllBooks.png)]()
 
 ## Add Book:
 
-### POST: https://ms-books-api.herokuapp.com/api/books
+### POST: https://books-api-2nd.herokuapp.com/books/
+
+#### Available authorizations
+
+    Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBjYjU3OTNkY2E2OGRmOWM1ODc4NWYiLCJpYXQiOjE2NDUwMDA0Nzl9.x_eY2KMiJZO1etFloOxqj-qThxjKcQc7MVloExY8NKM
 
 #### Responses:
 
@@ -203,11 +325,29 @@
 
 201 :Success
 
+    "status": "sucess",
+    "code": 201,
+    "message": "Book 'Mad Max' added",
+    "data": {
+        "result": {
+            "name": "Mad Max",
+            "author": "George Miller",
+            "pageCount": 413...
+        }
+
 400: Bad Request
 
-409: Conflict (exist name of book)
+404: Not Found
+
+    "message": "Not found"
+
+409: Conflict
+
+    "message": "Book already exist"
 
 500: Server Error(Missing required field )
+
+    "message": "book validation failed: name: Path `name` is required."
 
 [![Header](https://github.com/mykolasenyuk/books-api/blob/main/pic/addbook.jpg)]()
 
