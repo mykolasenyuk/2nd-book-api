@@ -12,14 +12,10 @@
 
 #### Request body:
 
-{
-
     "name":"User",
     "email": "User@gmail.com",
     "password": "123546",
     "role":"admin"
-
-}
 
 #### Responses:
 
@@ -27,15 +23,64 @@
 
 201 :Success
 
+    "status": "success",
+    "code": 201,
+    "message": "✔️ Success User register",
+    "data": {
+        "name": "User",
+        "email": "User@gmail.com",
+        "password": "$2a$10$LoTlTV8ti0SlEZZMsJ2ww.88ngovkfWWPi8j6w4g8vm0jL8FZbWLG",
+        "token": null,
+        "role": "admin"
+    }
+
 409: Conflict: "Already register"
 
 400: Bad request: Missing fields
 
-404: Not Found
+404: Not Found:
+
+    "message": "Not found"
 
 500: Server Error
 
 [![Header](https://github.com/mykolasenyuk/2nd-book-api/blob/main/src/pictures/Signup.png)]()
+
+## Login user:
+
+### POST: https://books-api-2nd.herokuapp.com/login
+
+#### Request body:
+
+    "email": "User@gmail.com",
+    "password": "123546"
+
+#### Responses:
+
+### CODE:
+
+201 :Success
+
+     "status": "✔️ Success",
+    "code": 201,
+    "data":{
+        "_id": "620c1b441c4ee805ca4b8e43",
+        "name": "User",
+        "email": "User@gmail.com",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBjMWI0NDFjNGVlODA1Y2E0YjhlNDMiLCJpYXQiOjE2NDQ5OTkyMjl9.ATlPErfQFaMFsp-inAApmAOt3usNSTqCtM1xjfVYXOk"
+    }
+
+400: Bad request:
+
+    "message": "Email or password is wrong"
+
+404: Not Found:
+
+    "message": "Not found"
+
+500: Server Error
+
+[![Header](https://github.com/mykolasenyuk/2nd-book-api/blob/main/src/pictures/login.png)]()
 
 ## Get All books:
 
