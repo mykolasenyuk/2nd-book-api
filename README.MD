@@ -307,6 +307,12 @@
 
     "message": "Not found"
 
+401: Unauthorized
+
+    "status": "error",
+    "code": 401,
+    "message": "Not authorized"
+
 500: Internal Server Error
 
 [![Header](https://github.com/mykolasenyuk/2nd-book-api/blob/main/src/pictures/GetAllBooks.png)]()
@@ -345,6 +351,12 @@
 
     "message": "book validation failed",
 
+401: Unauthorized
+
+    "status": "error",
+    "code": 401,
+    "message": "Not authorized"
+
 404: Not Found
 
     "message": "Not found"
@@ -365,7 +377,11 @@
 
 ## Delete book :
 
-### DELETE:https://ms-books-api.herokuapp.com/api/books/bookID
+### DELETE:http://localhost:3000/books/:bookId
+
+#### Available authorizations
+
+    Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBjYjU3OTNkY2E2OGRmOWM1ODc4NWYiLCJpYXQiOjE2NDUwMDA0Nzl9.x_eY2KMiJZO1etFloOxqj-qThxjKcQc7MVloExY8NKM
 
 #### Responses:
 
@@ -373,11 +389,29 @@
 
 200 :Success
 
+    "status": "success",
+    "code": 200,
+    "message": " ✔️ Book deleted"
+
 404: Not found
 
-500: Server Error( wrong id of book )
+"message": "Book with ID=bookId not found"
 
-[![Header](https://github.com/mykolasenyuk/books-api/blob/main/pic/dlt.jpg)]()
+401: Unauthorized
+
+    "status": "error",
+    "code": 401,
+    "message": "Not authorized"
+
+500: Server Error
+
+### if User is not admin:
+
+403: Forbidden
+
+    "message": " You don't have access"
+
+[![Header](https://github.com/mykolasenyuk/2nd-book-api/blob/main/src/pictures/DeleteBookById.png)]()
 
 ## Get book by ID:
 
@@ -446,6 +480,12 @@
 404: Not found
 
     "message": "Book with ID=bookId not found"
+
+401: Unauthorized
+
+    "status": "error",
+    "code": 401,
+    "message": "Not authorized"
 
 400: Bad Request
 
