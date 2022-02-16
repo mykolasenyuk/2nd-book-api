@@ -35,7 +35,7 @@
 
 500: Server Error
 
-[![Header](https://github.com/mykolasenyuk/books-api/blob/main/pic/getAll.jpg)]()
+[![Header](https://github.com/mykolasenyuk/2nd-book-api/blob/main/src/pictures/Signup.png)]()
 
 ## Get All books:
 
