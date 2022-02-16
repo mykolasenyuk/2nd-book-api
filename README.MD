@@ -438,6 +438,12 @@
         ...
     }
 
+401: Unauthorized
+
+    "status": "error",
+    "code": 401,
+    "message": "Not authorized"
+
 404: Not found
 
     "message": "Book with ID=bookId not found"
